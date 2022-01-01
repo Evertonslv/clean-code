@@ -1,0 +1,12 @@
+version: "3"
+services:
+  clean-code-api:
+    image: evertonslvsilva/clean-code-api:latest
+    container_name: clean-code-api
+    build:
+      context: .
+      dockerfile: ./Dockerfile.api
+    ports:
+      - 3000:3000
+    volumes:
+      - ./api:/opt/project
