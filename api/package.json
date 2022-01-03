@@ -8,7 +8,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "./node_modules/.bin/eslint src"
+      "./node_modules/.bin/eslint src/"
     ]
   },
   "husky": {
@@ -20,8 +20,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.8.1",
-    "@typescript-eslint/parser": "^5.8.1",
     "eslint": "^8.6.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.3.0",
