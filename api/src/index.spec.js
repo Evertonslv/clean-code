@@ -1,5 +1,7 @@
 const index = require('./index');
 
+const result = index.getValue();
+
 test('Aplicar desconto', () => {
-  expect(6).toEqual(5);
+  expect(result).toEqual(5);
 });

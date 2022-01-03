@@ -1,5 +1,5 @@
-function teste() {
-  return { a: 's' };
+function getValue() {
+  return 5;
 }
 
-teste();
+module.exports = { getValue };
