@@ -22,8 +22,10 @@
     "rules": {
         "prettier/prettier": [
             "error", {
-            "endOfLine": "auto"
+            "endOfLine": "auto",
+            "allowForLoopAfterthoughts": true
         }
-    ]
+    ],
+    "no-plusplus": "off"
     }
 }
