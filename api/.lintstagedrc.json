@@ -2,7 +2,7 @@
     "*.js": [
       "eslint src/"
     ],
-    "*.spec.js": [
+    "*.(spec|test).js": [
       "npm test"
     ]
   }
