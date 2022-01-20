@@ -1,58 +1,44 @@
 function validate(cpf) {
-  if (cpf !== null) {
-    if (cpf !== undefined) {
-      if (cpf.length >= 11 || cpf.length <= 14) {
-        const str = cpf
-          .replace('.', '')
-          .replace('.', '')
-          .replace('-', '')
-          .replace(' ', '');
+  if (!cpf || cpf.length < 11 || cpf.length > 14) {
+    return false;
+  }
 
-        if (!str.split('').every((c) => c === str[0])) {
-          try {
-            let d1;
-            let d2;
-            let dg1;
-            let dg2;
-            let rest;
-            let digito;
-            d1 = 0;
-            d2 = 0;
-            dg1 = 0;
-            dg2 = 0;
-            rest = 0;
+  const str = cpf.replace(/\D/g, '');
 
-            for (let nCount = 1; nCount < str.length - 1; nCount++) {
-              // if (isNaN(parseInt(str.substring(nCount -1, nCount)))) {
-              // 	return false;
-              // } else {
+  if (!str.split('').every((c) => c === str[0])) {
+    try {
+      let d1;
+      let d2;
+      let dg1;
+      let dg2;
+      let rest;
+      let digito;
+      d1 = 0;
+      d2 = 0;
+      dg1 = 0;
+      dg2 = 0;
+      rest = 0;
 
-              digito = Number(str.substring(nCount - 1, nCount));
-              d1 += (11 - nCount) * digito;
+      for (let nCount = 1; nCount < str.length - 1; nCount++) {
+        digito = Number(str.substring(nCount - 1, nCount));
+        d1 += (11 - nCount) * digito;
+        d2 += (12 - nCount) * digito;
+      }
 
-              d2 += (12 - nCount) * digito;
-              // }
-            }
+      rest = d1 % 11;
+      dg1 = rest < 2 ? (dg1 = 0) : 11 - rest;
+      d2 += 2 * dg1;
+      rest = d2 % 11;
+      if (rest < 2) dg2 = 0;
+      else dg2 = 11 - rest;
 
-            rest = d1 % 11;
-
-            dg1 = rest < 2 ? (dg1 = 0) : 11 - rest;
-            d2 += 2 * dg1;
-            rest = d2 % 11;
-            if (rest < 2) dg2 = 0;
-            else dg2 = 11 - rest;
-
-            const nDigVerific = str.substring(str.length - 2, str.length);
-            const nDigResult = `${dg1}${dg2}`;
-            return nDigVerific === nDigResult;
-          } catch (e) {
-            console.error('Erro:', e);
-
-            return false;
-          }
-        } else return false;
-      } else return false;
-    } else return false;
+      const nDigVerific = str.substring(str.length - 2, str.length);
+      const nDigResult = `${dg1}${dg2}`;
+      return nDigVerific === nDigResult;
+    } catch (e) {
+      console.error('Erro:', e);
+      return false;
+    }
   } else return false;
 }
 
