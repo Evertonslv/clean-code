@@ -1,8 +1,8 @@
 {
-    "*.js": [
-      "eslint src/"
+    "*.ts": [
+      "eslint"
     ],
-    "*.(spec|test).js": [
+    "*.(spec|test).ts": [
       "npm test"
     ]
   }
